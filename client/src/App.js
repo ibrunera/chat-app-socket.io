@@ -97,10 +97,10 @@ const App = () =>{
       setUserId(id)
     })
 
-    socketRef.current.on('message', message=>{
+    socketRef.current.on('message', (message)=>{
       receiveMessage(message)
     })
-  })
+  }, [])
 
   function receiveMessage(message){
     setMessages(msgs =>[...msgs,message])
@@ -144,8 +144,8 @@ const App = () =>{
       </Container>
       <Form onSubmit={sendMessage}>
         <TextArea value={message} onChange={handleChange} placeholder="Type here..."/>
+        <Button>Send</Button>
       </Form>
-      <Button>Send</Button>
     </Page>
   )
 }
